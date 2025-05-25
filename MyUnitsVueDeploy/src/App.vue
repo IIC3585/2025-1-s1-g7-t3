@@ -1,6 +1,7 @@
 <script>
 import CategorySelector from './components/CategorySelector.vue'
 import UnitConverter from './components/UnitConverter.vue'
+import ScaleVisualization from './components/ScaleVisualization.vue'
 import ThemeToggle from './components/ui/ThemeToggle.vue'
 import LanguageSelector from './components/ui/LanguageSelector.vue'
 
@@ -9,6 +10,7 @@ export default {
   components: {
     CategorySelector,
     UnitConverter,
+    ScaleVisualization,
     ThemeToggle,
     LanguageSelector
   }
@@ -28,8 +30,9 @@ export default {
     <!-- Main Content -->
     <main class="app-main">
       <div class="main-container">
-        <CategorySelector />
-        <UnitConverter />
+        <CategorySelector class="categories-section" />
+        <UnitConverter class="converter-section" />
+        <ScaleVisualization class="visualization-section" />
       </div>
     </main>
 
@@ -37,7 +40,7 @@ export default {
     <footer class="app-footer">
       <div class="footer-content">
         <span>&copy; 2025 IIC3585 - Diseño Avanzado de Aplicaciones Web.</span>
-        <span>Built with Vue.js, Vuex & PrimeVue</span>
+        <span>Built with Vue.js, Vuex & PrimeVue & Love ♥️ by Grupo 7</span>
       </div>
     </footer>
   </div>
@@ -112,10 +115,14 @@ body {
 
 .main-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
   gap: 24px;
+  grid-template-areas: 
+    "categories converter"
+    "categories visualization";
 }
 
 .app-footer {
@@ -144,7 +151,30 @@ body {
   color: #94a3b8;
 }
 
+/* Grid areas */
+.categories-section {
+  grid-area: categories;
+}
+
+.converter-section {
+  grid-area: converter;
+}
+
+.visualization-section {
+  grid-area: visualization;
+}
+
 /* Responsive design */
+@media (max-width: 1024px) {
+  .main-container {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "categories"
+      "converter"
+      "visualization";
+  }
+}
+
 @media (max-width: 768px) {
   .top-controls {
     top: 16px;

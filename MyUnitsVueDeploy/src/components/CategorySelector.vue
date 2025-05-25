@@ -149,7 +149,7 @@ export default {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 20px;
+  padding: 24px;
   width: 100%;
   text-align: left;
   position: relative;

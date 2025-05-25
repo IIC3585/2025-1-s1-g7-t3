@@ -79,7 +79,7 @@ const conversionFactors = {
 // Translations
 const translations = {
   en: {
-    appTitle: 'UnitPro',
+    appTitle: 'How many units to...',
     appTagline: 'Professional Unit Converter',
     selectCategory: 'Unit Categories',
     categoryDescription: 'Choose a measurement category to begin converting',
@@ -159,10 +159,94 @@ const translations = {
       watt_hour: 'Watt Hour',
       kilowatt_hour: 'Kilowatt Hour',
       btu: 'BTU'
+    },
+    // Scale visualization
+    dangerScale: 'Danger Scale',
+    scaleComparison: 'Scale Comparison',
+    extremeValues: 'Extreme Values',
+    safe: 'Safe',
+    caution: 'Caution',
+    warning: 'Warning',
+    danger: 'Danger',
+    extreme: 'Extreme',
+    // Temperature descriptions
+    tempSafe: 'Safe temperature for humans',
+    tempHot: 'Hot but tolerable for short periods',
+    tempDangerous: 'Can cause burns and injury',
+    tempLethal: 'Lethal temperature - immediate danger',
+    tempExtreme: 'Extreme temperature - instant death',
+    // Pressure descriptions
+    pressureSafe: 'Normal atmospheric pressure',
+    pressureUncomfortable: 'Uncomfortable but survivable',
+    pressureDangerous: 'Can cause serious injury',
+    pressureLethal: 'Lethal pressure levels',
+    pressureExtreme: 'Extreme pressure - instant death',
+    // Energy descriptions
+    energyLow: 'Low energy levels',
+    energyModerate: 'Moderate energy levels',
+    energyHigh: 'High energy levels',
+    energyDangerous: 'Dangerous energy levels',
+    energyLethal: 'Lethal energy levels',
+    // Larger beings
+    elephantDescription: 'Could affect large mammals',
+    whaleDescription: 'Could affect the largest animals',
+    buildingDescription: 'Could damage structures',
+    // Scale items translations
+    scaleItems: {
+      // Length
+      virus: 'Virus',
+      bacteria: 'Bacteria',
+      hair: 'Hair',
+      ant: 'Ant',
+      coin: 'Coin',
+      hand: 'Hand',
+      person: 'Person',
+      car: 'Car',
+      house: 'House',
+      building: 'Building',
+      mountain: 'Mountain',
+      earth: 'Earth',
+      // Weight
+      feather: 'Feather',
+      phone: 'Phone',
+      book: 'Book',
+      cat: 'Cat',
+      piano: 'Piano',
+      elephant: 'Elephant',
+      truck: 'Truck',
+      whale: 'Whale',
+      // Volume
+      teaspoon: 'Teaspoon',
+      shotGlass: 'Shot Glass',
+      cup: 'Cup',
+      bottle: 'Bottle',
+      milkJug: 'Milk Jug',
+      bucket: 'Bucket',
+      bathtub: 'Bathtub',
+      hotTub: 'Hot Tub',
+      pool: 'Pool',
+      // Area
+      stamp: 'Stamp',
+      sheet: 'Sheet',
+      door: 'Door',
+      room: 'Room',
+      footballField: 'Football Field',
+      cityBlock: 'City Block',
+      centralPark: 'Central Park',
+      // Speed
+      walking: 'Walking',
+      running: 'Running',
+      cycling: 'Cycling',
+      carCity: 'Car City',
+      carHighway: 'Car Highway',
+      cheetah: 'Cheetah',
+      train: 'Train',
+      airplane: 'Airplane',
+      sound: 'Sound'
     }
   },
   es: {
-    appTitle: 'UnitPro',
+    appTitle: 'Cuantas unidades para...',
     appTagline: 'Conversor Profesional de Unidades',
     selectCategory: 'Categorías de Unidades',
     categoryDescription: 'Elige una categoría de medición para comenzar a convertir',
@@ -242,6 +326,90 @@ const translations = {
       watt_hour: 'Vatio Hora',
       kilowatt_hour: 'Kilovatio Hora',
       btu: 'BTU'
+    },
+    // Scale visualization
+    dangerScale: 'Escala de Peligro',
+    scaleComparison: 'Comparación de Escalas',
+    extremeValues: 'Valores Extremos',
+    safe: 'Seguro',
+    caution: 'Precaución',
+    warning: 'Advertencia',
+    danger: 'Peligro',
+    extreme: 'Extremo',
+    // Temperature descriptions
+    tempSafe: 'Temperatura segura para humanos',
+    tempHot: 'Caliente pero tolerable por períodos cortos',
+    tempDangerous: 'Puede causar quemaduras y lesiones',
+    tempLethal: 'Temperatura letal - peligro inmediato',
+    tempExtreme: 'Temperatura extrema - muerte instantánea',
+    // Pressure descriptions
+    pressureSafe: 'Presión atmosférica normal',
+    pressureUncomfortable: 'Incómoda pero sobrevivible',
+    pressureDangerous: 'Puede causar lesiones graves',
+    pressureLethal: 'Niveles de presión letales',
+    pressureExtreme: 'Presión extrema - muerte instantánea',
+    // Energy descriptions
+    energyLow: 'Niveles de energía bajos',
+    energyModerate: 'Niveles de energía moderados',
+    energyHigh: 'Niveles de energía altos',
+    energyDangerous: 'Niveles de energía peligrosos',
+    energyLethal: 'Niveles de energía letales',
+    // Larger beings
+    elephantDescription: 'Podría afectar a mamíferos grandes',
+    whaleDescription: 'Podría afectar a los animales más grandes',
+    buildingDescription: 'Podría dañar estructuras',
+    // Scale items translations
+    scaleItems: {
+      // Length
+      virus: 'Virus',
+      bacteria: 'Bacteria',
+      hair: 'Cabello',
+      ant: 'Hormiga',
+      coin: 'Moneda',
+      hand: 'Mano',
+      person: 'Persona',
+      car: 'Auto',
+      house: 'Casa',
+      building: 'Edificio',
+      mountain: 'Montaña',
+      earth: 'Tierra',
+      // Weight
+      feather: 'Pluma',
+      phone: 'Teléfono',
+      book: 'Libro',
+      cat: 'Gato',
+      piano: 'Piano',
+      elephant: 'Elefante',
+      truck: 'Camión',
+      whale: 'Ballena',
+      // Volume
+      teaspoon: 'Cucharadita',
+      shotGlass: 'Vaso de Shot',
+      cup: 'Taza',
+      bottle: 'Botella',
+      milkJug: 'Jarra de Leche',
+      bucket: 'Balde',
+      bathtub: 'Bañera',
+      hotTub: 'Jacuzzi',
+      pool: 'Piscina',
+      // Area
+      stamp: 'Estampilla',
+      sheet: 'Hoja',
+      door: 'Puerta',
+      room: 'Habitación',
+      footballField: 'Campo de Fútbol',
+      cityBlock: 'Manzana',
+      centralPark: 'Parque Central',
+      // Speed
+      walking: 'Caminando',
+      running: 'Corriendo',
+      cycling: 'Ciclismo',
+      carCity: 'Auto Ciudad',
+      carHighway: 'Auto Autopista',
+      cheetah: 'Guepardo',
+      train: 'Tren',
+      airplane: 'Avión',
+      sound: 'Sonido'
     }
   }
 }
@@ -422,8 +590,8 @@ export default createStore({
         return
       }
       
-      // Only allow negative values for temperature
-      if (numValue < 0 && state.selectedCategory !== 'temperature') {
+      // Only allow negative values for temperature & presure
+      if (numValue < 0 && state.selectedCategory !== 'temperature' && state.selectedCategory !== 'pressure') {
         commit('SET_TO_VALUE', '')
         return
       }
@@ -452,8 +620,8 @@ export default createStore({
         return
       }
       
-      // Only allow negative values for temperature
-      if (numValue < 0 && state.selectedCategory !== 'temperature') {
+      // Only allow negative values for temperature & presure
+      if (numValue < 0 && state.selectedCategory !== 'temperature' && state.selectedCategory !== 'pressure') {
         commit('SET_FROM_VALUE', '')
         return
       }
@@ -503,6 +671,10 @@ export default createStore({
       return translations[state.language].unitNames[unitKey] || unitKey
     },
     
+    translateScaleItem: (state) => (itemKey) => {
+      return translations[state.language].scaleItems[itemKey] || itemKey
+    },
+    
     convert: () => (value, fromUnit, toUnit, category) => {
       if (fromUnit === toUnit) return value
       
@@ -535,7 +707,7 @@ export default createStore({
         // Standard conversion through base unit
         const baseValue = value / factors[fromUnit]
         const result = baseValue * factors[toUnit]
-        return Math.round(result * 1000000) / 1000000 // Round to 6 decimal places
+        return Math.round(result * 1000000) / 1000000
       }
       
       return value

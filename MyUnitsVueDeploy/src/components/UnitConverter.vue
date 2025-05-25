@@ -26,6 +26,7 @@
               optionValue="value"
               class="unit-select"
               :placeholder="translate('from')"
+              @change="onFromUnitChange"
             />
             
             <div class="input-wrapper">
@@ -39,7 +40,7 @@
                 :useGrouping="false"
                 fluid
               />
-              <span class="input-unit-label">{{ currentCategory.units[fromUnit] }}</span>
+              <span class="input-unit-label">{{ fromUnitSymbol }}</span>
             </div>
           </div>
 
@@ -69,6 +70,7 @@
               optionValue="value"
               class="unit-select"
               :placeholder="translate('to')"
+              @change="onToUnitChange"
             />
             
             <div class="input-wrapper">
@@ -83,7 +85,7 @@
                 fluid
                 readonly
               />
-              <span class="input-unit-label">{{ currentCategory.units[toUnit] }}</span>
+              <span class="input-unit-label">{{ toUnitSymbol }}</span>
             </div>
           </div>
         </div>
@@ -95,7 +97,7 @@
               <div class="conversion-rate">
                 <i class="pi pi-info-circle rate-icon"></i>
                 <span class="rate-text">
-                  1 {{ currentCategory.units[fromUnit] }} = {{ getConversionRate() }} {{ currentCategory.units[toUnit] }}
+                  1 {{ fromUnitSymbol }} = {{ getConversionRate() }} {{ toUnitSymbol }}
                 </span>
               </div>
             </template>
@@ -139,6 +141,14 @@ export default {
       set(value) {
         this.$store.commit('SET_TO_VALUE', value === null ? '' : value.toString())
       }
+    },
+    
+    fromUnitSymbol() {
+      return this.currentCategory?.units?.[this.fromUnit] || ''
+    },
+    
+    toUnitSymbol() {
+      return this.currentCategory?.units?.[this.toUnit] || ''
     }
   },
   
@@ -154,6 +164,20 @@ export default {
     onToValueChange(event) {
       const value = event.value
       this.convertToFrom(value === null ? '' : value.toString())
+    },
+    
+    onFromUnitChange(event) {
+      this.SET_FROM_UNIT(event.value)
+      if (this.fromValueNumber) {
+        this.convertFromTo(this.fromValueNumber.toString())
+      }
+    },
+    
+    onToUnitChange(event) {
+      this.SET_TO_UNIT(event.value)
+      if (this.fromValueNumber) {
+        this.convertFromTo(this.fromValueNumber.toString())
+      }
     },
     
     getConversionRate() {
@@ -252,6 +276,7 @@ export default {
 
 .converter-body {
   margin-top: 24px;
+  padding: 0 8px;
 }
 
 .conversion-grid {

@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     ...mapActions(['setLanguage']),
-    onLanguageChange(event) {
+      onLanguageChange(event) {
       this.setLanguage(event.value)
     },
     getLanguageByValue(value) {
