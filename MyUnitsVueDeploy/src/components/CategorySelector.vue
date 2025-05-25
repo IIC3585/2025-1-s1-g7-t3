@@ -136,13 +136,13 @@ export default {
 }
 
 .dark .category-button:hover {
-  border-color: rgba(96, 165, 250, 0.3) !important;
+  border-color: rgba(236, 72, 153, 0.3) !important;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3) !important;
 }
 
 .dark .category-button--active {
-  background: linear-gradient(135deg, #60a5fa, #3b82f6) !important;
-  border-color: #60a5fa !important;
+  background: linear-gradient(135deg, #ec4899, #be185d) !important;
+  border-color: #ec4899 !important;
 }
 
 .category-content {
@@ -208,6 +208,8 @@ export default {
 
 .dark .category-button--active .category-name {
   color: #ffffff;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .category-units {
@@ -220,11 +222,17 @@ export default {
 }
 
 .category-button--active .category-units {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .dark .category-units {
   color: #9ca3af;
+}
+
+.dark .category-button--active .category-units {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .category-check {

@@ -35,7 +35,7 @@
                 @input="onFromValueChange"
                 class="unit-input"
                 :placeholder="translate('enterValue')"
-                :min="selectedCategory === 'temperature' ? undefined : 0"
+                :min="selectedCategory === 'temperature' || selectedCategory === 'pressure' ? undefined : 0"
                 :maxFractionDigits="6"
                 :useGrouping="false"
                 fluid
@@ -79,7 +79,7 @@
                 @input="onToValueChange"
                 class="unit-input result-input"
                 :placeholder="translate('result')"
-                :min="selectedCategory === 'temperature' ? undefined : 0"
+                :min="selectedCategory === 'temperature' || selectedCategory === 'pressure' ? undefined : 0"
                 :maxFractionDigits="6"
                 :useGrouping="false"
                 fluid
@@ -247,6 +247,11 @@ export default {
   flex-shrink: 0;
 }
 
+.dark .header-icon {
+  background: linear-gradient(135deg, #ec4899, #be185d);
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+}
+
 .header-content {
   flex: 1;
 }
@@ -377,13 +382,13 @@ export default {
 }
 
 .dark .swap-button {
-  background: #60a5fa !important;
-  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3) !important;
+  background: #ec4899 !important;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3) !important;
 }
 
 .dark .swap-button:hover {
-  background: #3b82f6 !important;
-  box-shadow: 0 8px 20px rgba(96, 165, 250, 0.4) !important;
+  background: #be185d !important;
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4) !important;
 }
 
 /* Ensure icon is visible */
@@ -422,6 +427,10 @@ export default {
 .rate-icon {
   font-size: 18px;
   color: #3b82f6;
+}
+
+.dark .rate-icon {
+  color: #ec4899;
 }
 
 .rate-text {
@@ -477,8 +486,8 @@ export default {
 }
 
 .dark :deep(.p-inputnumber-input:focus) {
-  border-color: #60a5fa !important;
-  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1) !important;
+  border-color: #ec4899 !important;
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1) !important;
 }
 
 .dark :deep(.p-inputnumber-input:hover) {
@@ -525,8 +534,8 @@ export default {
 }
 
 .dark :deep(.p-select:not(.p-disabled).p-focus) {
-  border-color: #60a5fa !important;
-  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1) !important;
+  border-color: #ec4899 !important;
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1) !important;
 }
 
 .dark :deep(.p-select .p-select-label) {

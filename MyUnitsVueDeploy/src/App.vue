@@ -4,6 +4,7 @@ import UnitConverter from './components/UnitConverter.vue'
 import ScaleVisualization from './components/ScaleVisualization.vue'
 import ThemeToggle from './components/ui/ThemeToggle.vue'
 import LanguageSelector from './components/ui/LanguageSelector.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
@@ -13,6 +14,9 @@ export default {
     ScaleVisualization,
     ThemeToggle,
     LanguageSelector
+  },
+  computed: {
+    ...mapGetters(['translate'])
   }
 }
 </script>
@@ -25,6 +29,12 @@ export default {
         <ThemeToggle />
         <LanguageSelector />
       </div>
+    </div>
+
+    <!-- App Title -->
+    <div class="app-title-section">
+      <h1 class="app-title">{{ translate('appTitle') }}</h1>
+      <p class="app-tagline">{{ translate('appTagline') }}</p>
     </div>
 
     <!-- Main Content -->
@@ -84,12 +94,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #f8fafc;
 }
 
-.dark #app {
-  background: #0f172a;
-}
 
 .top-controls {
   position: fixed;
@@ -104,9 +110,52 @@ body {
   align-items: center;
 }
 
+.app-title-section {
+  text-align: center;
+  padding: 80px 20px 40px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 32px 32px;
+}
+
+.app-title-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
+}
+
+.app-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.app-tagline {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+.dark .app-title-section {
+  background: linear-gradient(135deg, #be185d 0%, #ec4899 100%);
+}
+
 .app-main {
   flex: 1;
-  padding: 80px 20px 20px;
+  padding: 20px 20px 20px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -115,11 +164,11 @@ body {
 
 .main-container {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1600px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-rows: auto auto;
-  gap: 24px;
+  gap: 32px;
   grid-template-areas: 
     "categories converter"
     "categories visualization";
@@ -181,8 +230,20 @@ body {
     left: 16px;
   }
   
+  .app-title-section {
+    padding: 70px 16px 30px;
+  }
+  
+  .app-title {
+    font-size: 2.5rem;
+  }
+  
+  .app-tagline {
+    font-size: 1.1rem;
+  }
+  
   .app-main {
-    padding: 70px 16px 16px;
+    padding: 16px;
   }
   
   .main-container {
@@ -207,8 +268,20 @@ body {
     gap: 8px;
   }
   
+  .app-title-section {
+    padding: 60px 12px 24px;
+  }
+  
+  .app-title {
+    font-size: 2rem;
+  }
+  
+  .app-tagline {
+    font-size: 1rem;
+  }
+  
   .app-main {
-    padding: 60px 12px 12px;
+    padding: 12px;
   }
   
   .main-container {
