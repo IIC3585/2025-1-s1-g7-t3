@@ -291,9 +291,10 @@ body {
 
 /* PrimeVue theme customizations */
 .p-card {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
   border: none !important;
   border-radius: 16px !important;
+  padding: 20px !important;
 }
 
 .dark .p-card {
