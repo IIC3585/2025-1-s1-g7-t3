@@ -2,10 +2,12 @@
 	import { convert } from '../utils/unitConversions';
 	import type { UnitCategory, UnitName } from '../utils/unitCategories';
   import type { Language } from '../utils/appTexts';
+	import { type ScaleCategory, ScalarCategories } from '../utils/scaleItems';
 
   import NavBar from './Navbar.svelte';
   import CategorySelect from './CategorySelect.svelte';
 	import UnitConverter from './UnitConverter.svelte';
+  import ScaleComparison from './ScaleComparison.svelte';
 
 	let appState = $state({
 		category: 'length' as UnitCategory,
@@ -49,6 +51,15 @@
       lang={appState.lang}
       dark={appState.dark}
     />
+    {#if appState.category in ScalarCategories}
+    <ScaleComparison
+      value={appState.value}
+      unit={appState.from}
+      category={appState.category as ScaleCategory}
+      lang={appState.lang}
+      dark={appState.dark}
+    />
+    {/if}
   </div>
 </main>
 

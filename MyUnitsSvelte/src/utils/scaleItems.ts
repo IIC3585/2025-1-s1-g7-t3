@@ -1,4 +1,19 @@
-export const scaleItems = {
+export type ScaleCategory = keyof typeof SCALES;
+export type ScaleItem = {
+  name: string;
+  icon: string;
+  value: string;
+  threshold: number; // in meters, kilograms, liters, etc.
+};
+export enum ScalarCategories {
+  length = 'length',
+  weight = 'weight',
+  volume = 'volume',
+  area = 'area',
+  speed = 'speed'
+}
+
+export const SCALES = {
 	length: [
 		{ name: 'virus', icon: '🦠', value: '0.1 μm', threshold: 0.0000001 },
 		{ name: 'bacteria', icon: '🧫', value: '1 μm', threshold: 0.000001 },
