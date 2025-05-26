@@ -1,5 +1,10 @@
 export type Language = keyof typeof TEXTS;
 
+export const LANGUAGES = [
+	{ code: 'EN', name: 'English', flag: '🇺🇸', value: 'en' },
+	{ code: 'ES', name: 'Español', flag: '🇨🇱', value: 'es' }
+];
+
 export const TEXTS = {
 	en: {
 		appTitle: 'How many units to...',

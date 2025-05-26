@@ -1,6 +1,6 @@
-import type { UnitCategory } from './unitCategories';
+import type { UnitCategory, UnitName } from './unitCategories';
 
-export function convert(value: number, from: string, to: string, category: UnitCategory): number {
+export function convert(value: number, from: UnitName, to: UnitName, category: UnitCategory): number {
 	if (category === 'temperature') {
 		return temperatureConversion(value, from, to);
 	}
@@ -9,32 +9,32 @@ export function convert(value: number, from: string, to: string, category: UnitC
 
 function linearConversion(
 	value: number,
-	from: string,
-	to: string,
+	from: UnitName,
+	to: UnitName,
 	category: UnitCategory
 ): number {
 	const units = CONVERSIONS[category];
-	return (value / (units as Record<string, number>)[from]) * (units as Record<string, number>)[to];
+	return (value / (units)[from]) * (units)[to];
 }
 
 function temperatureConversion(
 	value: number,
-	from: string,
-	to: string
+	from: UnitName,
+	to: UnitName
 ): number {
 	if (from === to) return value;
 
 	// Convert to Celsius first
 	let celsius = value;
-	if (from === 'celsius (°C)') celsius = value;
-	else if (from === 'fahrenheit (°F)') celsius = ((value - 32) * 5) / 9;
-	else if (from === 'kelvin (K)') celsius = value - 273.15;
+	if (from === 'celsius') celsius = value;
+	else if (from === 'fahrenheit') celsius = ((value - 32) * 5) / 9;
+	else if (from === 'kelvin') celsius = value - 273.15;
 
 	// Convert from Celsius to target
 	let result = celsius
-	if (to === 'celsius (°C)') result = celsius;
-	else if (to === 'fahrenheit (°F)') result = (celsius * 9) / 5 + 32;
-	else if (to === 'kelvin (K)') result = celsius + 273.15;
+	if (to === 'celsius') result = celsius;
+	else if (to === 'fahrenheit') result = (celsius * 9) / 5 + 32;
+	else if (to === 'kelvin') result = celsius + 273.15;
 
 	return result;
 }

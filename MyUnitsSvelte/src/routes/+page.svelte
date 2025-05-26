@@ -1,79 +1,75 @@
 <script lang="ts">
-	import { CONVERSIONS, convert } from '../utils/unitConversions';
-	import type { UnitCategory } from '../utils/unitCategories';
-	import { TEXTS } from '../utils/appTexts';
+	import { convert } from '../utils/unitConversions';
+	import type { UnitCategory, UnitName } from '../utils/unitCategories';
   import type { Language } from '../utils/appTexts';
 
-  import Header from './Header.svelte';
+  import NavBar from './Navbar.svelte';
   import CategorySelect from './CategorySelect.svelte';
-	import NumDisplay from './NumDisplay.svelte';
+	import UnitConverter from './UnitConverter.svelte';
 
 	let appState = $state({
 		category: 'length' as UnitCategory,
 		value: 1,
-		from: 'meter',
-		to: 'kilometer',
+		from: 'meter' as UnitName,
+		to: 'kilometer' as UnitName,
     lang: 'en' as Language,
     dark: false,
 	});
 
 	let result = $derived(convert(appState.value, appState.from, appState.to, appState.category));
-
-	function switcheroo() {
-		appState.value = result;
-
-		const temp = appState.from;
-		appState.from = appState.to;
-		appState.to = temp;
-	}
 </script>
 
-<Header bind:lang={appState.lang} bind:dark={appState.dark} />
+<svelte:head>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
 
-<main>
-	<CategorySelect bind:category={appState.category} lang={appState.lang} dark={appState.dark} />
+    body.dark-mode {
+      background-color: #0f172a;
+      color: white;
+    }
+  </style>
+</svelte:head>
 
-	<div>
-		<NumDisplay
-			bind:value={appState.value}
-			bind:unit={appState.from}
-			category={appState.category}
-			isInput={true}
-		/>
-		<button onclick={switcheroo}> &lt=&gt </button>
-		<NumDisplay
-      bind:value={result}
-      bind:unit={appState.to}
+<main class:dark-mode={appState.dark}>
+  <NavBar bind:lang={appState.lang} bind:dark={appState.dark} />
+
+  <div>
+    <CategorySelect bind:category={appState.category} lang={appState.lang} dark={appState.dark} />
+    <UnitConverter
+      bind:value={appState.value}
+      bind:result={result}
+      bind:from={appState.from}
+      bind:to={appState.to}
       category={appState.category}
+      lang={appState.lang}
+      dark={appState.dark}
     />
-	</div>
+  </div>
 </main>
 
+
 <style>
-	main {
+  main {
+    min-height: 100vh;
+    padding: 0.125rem 1rem;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+  }
+
+  main.dark-mode {
+    background-color: #0f172a;
+    color: white;
+  }
+
+	div {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 1rem;
-	}
-
-	div {
-		display: flex;
-		gap: 1rem;
-		align-items: center;
-		justify-content: space-around;
-		width: 60%;
-	}
-
-	button {
-		padding: 0.5rem;
-		border-radius: 0.5rem;
-		border: 1px solid #ccc;
-		font-size: 1rem;
-		cursor: pointer;
-		background-color: #f0f0f0;
-	}
-	button:hover {
-		background-color: #e0e0e0;
 	}
 </style>

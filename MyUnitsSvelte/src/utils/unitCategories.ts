@@ -1,4 +1,5 @@
 export type UnitCategory = keyof typeof CATEGORIES;
+export type UnitName = keyof typeof CATEGORIES[UnitCategory]['units'];
 
 export const CATEGORIES = {
 	length: {
