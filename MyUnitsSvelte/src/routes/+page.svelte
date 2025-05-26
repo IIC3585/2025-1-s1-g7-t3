@@ -1,92 +1,86 @@
 <script lang="ts">
-  import { unitCategories, convert } from "./unitConversions";
-  import type { UnitCategory } from "./unitConversions";
-  import NumDisplay from "./NumDisplay.svelte";
+	import { convert } from '../utils/unitConversions';
+	import type { UnitCategory, UnitName } from '../utils/unitCategories';
+  import type { Language } from '../utils/appTexts';
+	import { type ScaleCategory, ScalarCategories } from '../utils/scaleItems';
 
-  let CATEGORIES = Object.keys(unitCategories);
+  import NavBar from './Navbar.svelte';
+  import CategorySelect from './CategorySelect.svelte';
+	import UnitConverter from './UnitConverter.svelte';
+  import ScaleComparison from './ScaleComparison.svelte';
 
-  let uState = $state({
-    category: 'length' as UnitCategory,
-    value: 1,
-    from: 'meter',
-    to: 'kilometer',
-  })
+	let appState = $state({
+		category: 'length' as UnitCategory,
+		value: 1,
+		from: 'meter' as UnitName,
+		to: 'kilometer' as UnitName,
+    lang: 'en' as Language,
+    dark: false,
+	});
 
-  let result = $derived(convert(uState.value, uState.from, uState.to, uState.category));
-
-  function switcheroo() {
-    uState.value = result;
-
-    const temp = uState.from;
-    uState.from = uState.to;
-    uState.to = temp;
-  }
+	let result = $derived(convert(appState.value, appState.from, appState.to, appState.category));
 </script>
 
-<header>
-  <h1>MyUnits</h1>
-  <p>Unit converter</p>
-</header>
+<svelte:head>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
 
-<main>
-  <select bind:value={uState.category}>
-    {#each CATEGORIES as category}
-      <option value={category}>{category}</option>
-    {/each}
-  </select>
+    body.dark-mode {
+      background-color: #0f172a;
+      color: white;
+    }
+  </style>
+</svelte:head>
+
+<main class:dark-mode={appState.dark}>
+  <NavBar bind:lang={appState.lang} bind:dark={appState.dark} />
 
   <div>
-    <NumDisplay bind:value={uState.value} bind:unit={uState.from} category={uState.category} isInput={true}/>
-    <button onclick={switcheroo}>
-      &lt=&gt
-    </button>
-    <NumDisplay bind:value={result} bind:unit={uState.to} category={uState.category}/>
+    <CategorySelect bind:category={appState.category} lang={appState.lang} dark={appState.dark} />
+    <UnitConverter
+      bind:value={appState.value}
+      bind:result={result}
+      bind:from={appState.from}
+      bind:to={appState.to}
+      category={appState.category}
+      lang={appState.lang}
+      dark={appState.dark}
+    />
+    {#if appState.category in ScalarCategories}
+    <ScaleComparison
+      value={appState.value}
+      unit={appState.from}
+      category={appState.category as ScaleCategory}
+      lang={appState.lang}
+      dark={appState.dark}
+    />
+    {/if}
   </div>
 </main>
 
+
 <style>
-  header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 2rem 0;
-  }
-
-  header h1, p {
-    margin: 0;
-  }
   main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    min-height: 100vh;
+    padding: 0.125rem 1rem;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
   }
 
-  select {
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    width: 60%;
+  main.dark-mode {
+    background-color: #0f172a;
+    color: white;
   }
 
-  div {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: space-around;
-    width: 60%;
-  }
-
-  button {
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    cursor: pointer;
-    background-color: #f0f0f0;
-  }
-  button:hover {
-    background-color: #e0e0e0;
-  }
+	div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
 </style>
