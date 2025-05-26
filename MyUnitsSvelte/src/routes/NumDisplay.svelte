@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { unitCategories } from "./unitConversions";
-  import type { UnitCategory } from "./unitConversions";
+  import { CONVERSIONS } from "../utils/unitConversions";
+  import type { UnitCategory } from "../utils/unitCategories";
 
   let {
     value = $bindable(),
@@ -14,7 +14,7 @@
     isInput?: boolean
   } = $props();
 
-  let units = $derived(Object.keys(unitCategories[category]));
+  let units = $derived(Object.keys(CONVERSIONS[category]));
 
   $effect(() => {
     unit = isInput ? units[0]: units[1];
