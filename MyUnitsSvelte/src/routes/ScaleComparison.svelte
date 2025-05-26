@@ -77,11 +77,13 @@
     border-color: #5998e6;
   }
   main.dark-mode button.item-box {
+    color: white;
     background-color: #374151;
     border-color: #46505e;
   }
   main.dark-mode button.item-box.active {
     background-color: #1e3a8a;
+    border-color: #5998e6;
   }
   small {
     font-size: 0.75rem;
