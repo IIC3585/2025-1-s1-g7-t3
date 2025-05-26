@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { TEXTS, LANGUAGES } from "../utils/appTexts";
-  import type { Language } from "../utils/appTexts";
+  import { TEXTS, LANGUAGES, type Language } from "../utils/appTexts";
 
   let {
     lang = $bindable(),

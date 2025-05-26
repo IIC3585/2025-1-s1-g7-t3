@@ -1,8 +1,6 @@
 <script lang="ts">
-  import { TEXTS } from "../utils/appTexts";
-  import type { Language } from "../utils/appTexts";
-  import { CATEGORIES } from "../utils/unitCategories";
-  import type { UnitCategory, UnitName } from "../utils/unitCategories";
+  import { TEXTS, type Language } from "../utils/appTexts";
+  import { CATEGORIES, type UnitCategory, type UnitName } from "../utils/unitCategories";
 
   import NumDisplay from "./NumDisplay.svelte";
 

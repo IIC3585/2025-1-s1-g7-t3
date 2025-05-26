@@ -1,7 +1,6 @@
 <script lang="ts">
   import { CONVERSIONS } from "../utils/unitConversions";
-  import { CATEGORIES } from "../utils/unitCategories";
-  import type { UnitCategory, UnitName } from "../utils/unitCategories";
+  import { CATEGORIES, type UnitCategory, type UnitName } from "../utils/unitCategories";
 	import { TEXTS, type Language } from "../utils/appTexts";
 
   let {
