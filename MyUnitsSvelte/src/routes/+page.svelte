@@ -53,8 +53,8 @@
     />
     {#if appState.category in ScalarCategories}
     <ScaleComparison
-      value={appState.value}
-      unit={appState.from}
+      bind:value={appState.value}
+      bind:unit={appState.from}
       category={appState.category as ScaleCategory}
       lang={appState.lang}
       dark={appState.dark}

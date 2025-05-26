@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { TEXTS, type Language } from "../utils/appTexts";
-  import { SCALES, type ScaleCategory, type ScaleItem } from "../utils/scaleItems";
+  import { TEXTS, type Language, type ScaleItemType } from "../utils/appTexts";
+  import { SCALES, type ScaleCategory} from "../utils/scaleItems";
 	import type { UnitName } from "../utils/unitCategories";
   import { CONVERSIONS, convert } from "../utils/unitConversions";
 
   let {
-    value,
-    unit,
+    value = $bindable(),
+    unit = $bindable(),
     category,
     lang,
     dark
@@ -21,18 +21,25 @@
   let baseUnit = $derived(Object.keys(CONVERSIONS[category])[0] as UnitName);
   let convertedValue = $derived(convert(value, unit, baseUnit, category));
 
-  $inspect(baseUnit, convertedValue);
+  function handleItemClick(threshold: number) {
+    unit = baseUnit;
+    value = threshold;
+  }
 </script>
 
 <main class:dark-mode={dark}>
   <h2>{TEXTS[lang].scaleComparison}</h2>
   <div class="scale-items">
     {#each SCALES[category] as item}
-    <div class="item-box" class:active={convertedValue >= item.threshold}>
+    <button
+      class="item-box"
+      class:active={convertedValue >= item.threshold}
+      onclick={() => handleItemClick(item.threshold)}
+    >
       {item.icon}
-      <span>{item.name}</span>
+      <span>{TEXTS[lang].scaleItems[item.name as ScaleItemType]}</span>
       <small>{item.value}</small>
-    </div>
+    </button>
     {/each}
   </div>
 </main>
@@ -50,7 +57,7 @@
     flex-wrap: wrap;
     gap: 0.5rem;
   }
-  div.item-box {
+  button.item-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,15 +69,18 @@
     border-radius: 0.5rem;
     transition: background-color 0.3s ease;
   }
-  div.item-box.active {
+  button.item-box:hover {
+  cursor: pointer;
+}
+  button.item-box.active {
     background-color: #eff6ff;
     border-color: #5998e6;
   }
-  main.dark-mode div.item-box {
+  main.dark-mode button.item-box {
     background-color: #374151;
     border-color: #46505e;
   }
-  main.dark-mode div.item-box.active {
+  main.dark-mode button.item-box.active {
     background-color: #1e3a8a;
   }
   small {

@@ -1,4 +1,5 @@
 export type Language = keyof typeof TEXTS;
+export type ScaleItemType = keyof typeof TEXTS[Language]['scaleItems'];
 
 export const LANGUAGES = [
 	{ code: 'EN', name: 'English', flag: '🇺🇸', value: 'en' },
@@ -124,6 +125,32 @@ export const TEXTS = {
 		buildingDescription: 'Could damage structures',
 		// Scale items translations
 		scaleItems: {
+			// Temperature
+			freezing: 'Freezing Point',
+			roomTemp: 'Room Temperature',
+			bodyTemp: 'Body Temperature',
+			boiling: 'Boiling Point',
+			oven: 'Oven',
+			lava: 'Lava',
+			sunSurface: 'Sun Surface',
+
+			// Pressure
+			vacuum: 'Vacuum',
+			space: 'Outer Space',
+			atmosphere: 'Atmosphere',
+			bikeTire: 'Bike Tire',
+			carTire: 'Car Tire',
+			deepOcean: 'Deep Ocean',
+			hydraulicPress: 'Hydraulic Press',
+
+			// Energy
+			joule: 'Joule',
+			lightbulb: 'Lightbulb Flash',
+			phoneBattery: 'Phone Battery',
+			carBattery: 'Car Battery',
+			meal: 'Meal (Calories)',
+			tnt: 'TNT Explosion',
+			lightning: 'Lightning Bolt',
 			// Length
 			virus: 'Virus',
 			bacteria: 'Bacteria',
@@ -294,6 +321,32 @@ export const TEXTS = {
 		buildingDescription: 'Podría dañar estructuras',
 		// Scale items translations
 		scaleItems: {
+			// Temperatura
+			freezing: 'Punto de congelación',
+			roomTemp: 'Temperatura ambiente',
+			bodyTemp: 'Temperatura corporal',
+			boiling: 'Punto de ebullición',
+			oven: 'Horno',
+			lava: 'Lava',
+			sunSurface: 'Superficie del Sol',
+
+			// Presión
+			vacuum: 'Vacío',
+			space: 'Espacio exterior',
+			atmosphere: 'Atmósfera',
+			bikeTire: 'Llanta de bicicleta',
+			carTire: 'Llanta de auto',
+			deepOcean: 'Fondo oceánico',
+			hydraulicPress: 'Prensa hidráulica',
+
+			// Energía
+			joule: 'Joule',
+			lightbulb: 'Bombilla',
+			phoneBattery: 'Batería de teléfono',
+			carBattery: 'Batería de auto',
+			meal: 'Comida (calorías)',
+			tnt: 'Explosión de TNT',
+			lightning: 'Rayo',
 			// Length
 			virus: 'Virus',
 			bacteria: 'Bacteria',
